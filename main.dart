@@ -47,4 +47,80 @@ void main() {
   // fetching 할 때 많이 사용
   late int i;
   i = 10;
+
+  // list
+  List<int> numbers1 = [1, 2, 3];
+
+  // collection if 기능
+  var giveMeFive = true;
+  var numbers2 = [
+    1,
+    2,
+    3,
+    if (giveMeFive) 5,
+  ];
+  print(numbers2);
+
+  // String interpolation
+  var name = 'John';
+  var age = 30;
+  var message = 'My name is $name. I\'m ${age + 2} years old.';
+  print(message);
+
+  // collection for 기능
+  var numbers3 = [1, 2, 3];
+  var numbers4 = [
+    for (var n in numbers3) n * 2,
+  ];
+  print(numbers4);
+
+  // spread operator
+  var numbers5 = [1, 2, 3];
+  var numbers6 = [0, ...numbers5];
+  print(numbers6);
+
+  // set
+  var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astatine'};
+  print(halogens);
+
+  // map
+  // dart class가 워낙 강력해서 map을 잘 사용하지 않음
+  var gifts = {
+    // key: value
+    'first': 'partridge',
+    'second': 'turtledoves',
+    'fifth': 'golden rings',
+  };
+  print(gifts);
+
+  // function
+  print(add(10, 20));
+
+  // named parameter
+  print(sayHello(name: 'John'));
+
+  // ?? operator
+  print(capitalize(null));
+  print(capitalize('John'));
+
+  // ??= operator
+  // ??= 연산자는 왼쪽 피연산자가 null이면 오른쪽 피연산자를 할당
+  var name1;
+  name1 ??= 'Guest';
+  print(name1);
 }
+
+// fat arrow
+// 함수의 본문이 한 줄인 경우에는 fat arrow를 사용할 수 있음
+int add(int a, int b) => a + b;
+
+// named parameter
+// 함수의 매개변수에 이름을 붙여서 호출할 때 매개변수의 이름을 명시할 수 있음
+String sayHello({required String name, String? message}) {
+  return 'Hello $name! $message';
+}
+
+// ?? operator
+// ?? 연산자는 왼쪽 피연산자가 null이면 오른쪽 피연산자를 반환
+// ?? 연산자는 null safety를 적용한 변수에만 사용할 수 있음
+String capitalize(String? name) => name?.toUpperCase() ?? 'Guest';
