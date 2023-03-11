@@ -108,6 +108,26 @@ void main() {
   var name1;
   name1 ??= 'Guest';
   print(name1);
+
+  // class
+  // var player = Player('John', 30);
+  // player.introduce();
+
+  // named constructor parameters
+  var player = Player(name: 'John', age: 30);
+  player.introduce();
+
+  // named constructor
+  var guest = Player.guest(30);
+  guest.introduce();
+
+  // cascade notation
+  // cascade notation을 사용하면 객체를 생성한 후에
+  // 여러 메소드를 연속적으로 호출할 수 있음
+  var player1 = Player(name: 'John', age: 30)
+    ..introduce()
+    ..age = 40
+    ..introduce();
 }
 
 // fat arrow
@@ -124,3 +144,50 @@ String sayHello({required String name, String? message}) {
 // ?? 연산자는 왼쪽 피연산자가 null이면 오른쪽 피연산자를 반환
 // ?? 연산자는 null safety를 적용한 변수에만 사용할 수 있음
 String capitalize(String? name) => name?.toUpperCase() ?? 'Guest';
+
+// class
+// class Player {
+//   // field
+//   String name;
+//   int age;
+
+//   // constructor
+//   Player(this.name, this.age);
+
+//   // method
+//   void introduce() {
+//     print('My name is $name. I\'m $age years old.');
+//   }
+// }
+
+// named constructor parameters
+class Player {
+  // field
+  String name;
+  int age;
+
+  // named constructor parameters
+  Player({required this.name, required this.age});
+
+  // named constructor
+  Player.guest(int age)
+      : this.name = 'Guest',
+        this.age = age;
+
+  // method
+  void introduce() {
+    print('My name is $name. I\'m $age years old.');
+  }
+}
+
+// abstract class
+abstract class Human {
+  void walk();
+}
+
+class Coach extends Human {
+  // Human을 상속 받았기 때문에 꼭 walk를 구현해야 됨.
+  void walk() {
+    print("Coach is walking");
+  }
+}
