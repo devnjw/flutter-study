@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,9 +16,11 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isRunning = false;
   int totalPomodoros = 0;
   late Timer timer;
+  static AudioCache player = AudioCache();
 
   Future<void> onTick(Timer timer) async {
     if (totalSeconds == 0) {
+      await player.play("sound.mp3");
       timer.cancel();
       setState(() {
         isRunning = false;
